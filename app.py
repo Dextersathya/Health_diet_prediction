@@ -94,7 +94,8 @@ if not st.session_state["logged_in"]:
         if username and email and password:
             st.session_state["logged_in"] = True
             st.success("Login successful! Redirecting...")
-            st.experimental_rerun()
+            st.rerun()
+
         else:
             st.error("Please fill in all fields.")
 else:
@@ -104,18 +105,18 @@ else:
 
     with st.form("user_input"):
         st.subheader("Enter Your Details:")
-        age = st.number_input("Age", min_value=1, max_value=120, value=30)
+        age = st.number_input("Age", min_value=0, max_value=120, value=0)
         gender = st.selectbox("Gender", options=["Male", "Female"], index=1)
-        height = st.number_input("Height (cm)", min_value=50, max_value=250, value=175)
-        weight = st.number_input("Weight (kg)", min_value=10, max_value=300, value=70)
+        height = st.number_input("Height (cm)", min_value=0, max_value=250, value=0)
+        weight = st.number_input("Weight (kg)", min_value=0, max_value=300, value=0)
         dietary_preference = st.selectbox("Dietary Preference", options=list(dietary_map.values()))
-        protein = st.number_input("Protein Intake (grams)", min_value=0, max_value=500, value=110)
-        sugar = st.number_input("Sugar Intake (grams)", min_value=0, max_value=300, value=85)
-        sodium = st.number_input("Sodium Intake (mg)", min_value=0, max_value=5000, value=15)
-        carbs = st.number_input("Carbohydrates Intake (grams)", min_value=0, max_value=500, value=240)
-        fiber = st.number_input("Fiber Intake (grams)", min_value=0, max_value=100, value=30)
-        fat = st.number_input("Fat Intake (grams)", min_value=0, max_value=200, value=50)
-        calories = st.number_input("Calorie Intake (kcal)", min_value=0, max_value=5000, value=2000)
+        protein = st.number_input("Protein Intake (grams)", min_value=0, max_value=500, value=0)
+        sugar = st.number_input("Sugar Intake (grams)", min_value=0, max_value=300, value=0)
+        sodium = st.number_input("Sodium Intake (mg)", min_value=0, max_value=5000, value=0)
+        carbs = st.number_input("Carbohydrates Intake (grams)", min_value=0, max_value=500, value=0)
+        fiber = st.number_input("Fiber Intake (grams)", min_value=0, max_value=100, value=0)
+        fat = st.number_input("Fat Intake (grams)", min_value=0, max_value=200, value=0)
+        calories = st.number_input("Calorie Intake (kcal)", min_value=0, max_value=5000, value=0)
         activity_level = st.selectbox("Activity Level", options=list(activity_map.values()))
 
         submit = st.form_submit_button("Predict")
